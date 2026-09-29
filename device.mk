@@ -58,11 +58,3 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
 # Call the MiuiCamera setup
 $(call inherit-product-if-exists, device/xiaomi/miuicamera-mondrian/device.mk)
 
-# ximiparts
-$(call inherit-product, packages/apps/XiaomiParts/parts.mk)
-
-# more
-include packages/apps/XiaomiParts/parts.mk
-TARGET_USE_CLEARSPEAKER := true
-TARGET_USE_SATURATIONSLIDER := true
-TARGET_USE_DCDIMMING := true
