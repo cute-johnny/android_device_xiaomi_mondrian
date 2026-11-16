@@ -329,4 +329,7 @@
          manually by the user. Off by default, since the expected haptic feedback may not be
          available on some devices. -->
     <bool name="config_enableHapticTextHandle">true</bool>
+
+    <!-- Freeze cached background apps faster (5s instead of 10s) to curb background heap churn -->
+    <integer name="config_defaultFreezerDebounceTimeout">5000</integer>
 </resources>

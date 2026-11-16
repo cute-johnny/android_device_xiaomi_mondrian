@@ -58,3 +58,34 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
 # Call the MiuiCamera setup
 $(call inherit-product-if-exists, device/xiaomi/miuicamera-mondrian/device.mk)
 
+
+# Memory Management (Android 17 mmd ZRAM + LMKD tuning)
+PRODUCT_VENDOR_PROPERTIES += \
+    mmd.zram.enabled=true \
+    mmd.zram.comp_algorithm=lz4 \
+    mmd.zram.size=75% \
+    mmd.zram.writeback.enabled=true \
+    mmd.zram.writeback.device_size=1073741824 \
+    mmd.zram.writeback.min_free_space_mib=2048 \
+    mmd.zram.writeback.idle.enabled=true \
+    mmd.zram.writeback.huge_idle.enabled=true
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.lmk.kill_heaviest_task=true \
+    ro.lmk.psi_partial_stall_ms=100 \
+    ro.lmk.thrashing_limit=100 \
+    ro.lmk.swap_free_low_percentage=10
+
+# mmd: sepolicy gives mmd no sysfs read for /sys/class/block/*/mq/0/nr_tags, so
+# provide the UFS queue depth (32 slots - 1 reserved, ufshcd.c) via props.
+PRODUCT_VENDOR_PROPERTIES += \
+    mmd.zram.writeback.use_nr_tags_prop=true \
+    mmd.zram.writeback.nr_tags=31
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.lmk.kill_timeout_ms=100
+
+# RisingOS spoofer strictly opt-in (TEESimulator/AlwaysStrong owns attestation).
+# Re-enable: settings put secure spoof_activated 1
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.spoof.auto_activate=false
