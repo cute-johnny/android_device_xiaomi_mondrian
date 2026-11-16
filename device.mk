@@ -93,3 +93,8 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # MemoryLimiter: per-app cgroup v2 memory.high / swap limits (per RAM tier)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/memory-limiter-config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/memory-limiter-config.xml
+
+# mmd: recompress idle/huge zram pages with zstd (kernel CONFIG_ZRAM_MULTI_COMP)
+PRODUCT_VENDOR_PROPERTIES += \
+    mmd.zram.recompression.enabled=true \
+    mmd.zram.recompression.algorithm=zstd
