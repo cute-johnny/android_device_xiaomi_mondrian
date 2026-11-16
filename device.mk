@@ -89,3 +89,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # Re-enable: settings put secure spoof_activated 1
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.spoof.auto_activate=false
+
+# MemoryLimiter: per-app cgroup v2 memory.high / swap limits (per RAM tier)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/memory-limiter-config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/memory-limiter-config.xml

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Per-app memory limits for MemoryLimiter (values in MB, ~% of MemTotal).
+     The limit set with the largest minimumRequiredMemTotal <= MemTotal is used. -->
+<MemoryLimiterConfig>
+    <version>1</version>
+    <configList>
+        <limitSet>
+            <minimumRequiredMemTotal>6800</minimumRequiredMemTotal>
+            <memVisible>3700</memVisible>
+            <memNotVisible>1850</memNotVisible>
+            <swapVisible>1850</swapVisible>
+            <swapNotVisible>1850</swapNotVisible>
+        </limitSet>
+        <limitSet>
+            <minimumRequiredMemTotal>9216</minimumRequiredMemTotal>
+            <memVisible>5580</memVisible>
+            <memNotVisible>2790</memNotVisible>
+            <swapVisible>2790</swapVisible>
+            <swapNotVisible>2790</swapNotVisible>
+        </limitSet>
+        <limitSet>
+            <minimumRequiredMemTotal>14336</minimumRequiredMemTotal>
+            <memVisible>7600</memVisible>
+            <memNotVisible>3800</memNotVisible>
+            <swapVisible>3800</swapVisible>
+            <swapNotVisible>3800</swapNotVisible>
+        </limitSet>
+    </configList>
+</MemoryLimiterConfig>
