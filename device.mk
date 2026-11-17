@@ -98,3 +98,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_VENDOR_PROPERTIES += \
     mmd.zram.recompression.enabled=true \
     mmd.zram.recompression.algorithm=zstd
+
+# logd: 8 MiB per log buffer (default 256 KiB keeps only ~40 min of history)
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.logd.size=8M
