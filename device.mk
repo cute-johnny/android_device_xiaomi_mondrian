@@ -99,6 +99,17 @@ PRODUCT_VENDOR_PROPERTIES += \
     mmd.zram.recompression.enabled=true \
     mmd.zram.recompression.algorithm=zstd
 
+# mmd: tune idle-age windows & daily writeback budget for 12GB + Untracked/Tracked modes
+PRODUCT_VENDOR_PROPERTIES += \
+    mmd.zram.writeback.min_idle_seconds=7200 \
+    mmd.zram.writeback.max_idle_seconds=21600 \
+    mmd.zram.writeback.backoff_seconds=600 \
+    mmd.zram.writeback.max_bytes_per_day=2147483648 \
+    mmd.zram.recompression.min_idle_seconds=1800 \
+    mmd.zram.recompression.max_idle_seconds=7200 \
+    mmd.zram.recompression.backoff_seconds=1800 \
+    mmd.zram.recompression.threshold_bytes=1024
+
 # logd: 8 MiB per log buffer (default 256 KiB keeps only ~40 min of history)
 PRODUCT_VENDOR_PROPERTIES += \
     ro.logd.size=8M
